@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Component"
+    jcr:title="Testing - ActiveComponent"
+    jcr:description="ActiveComponent implmentation used for Testing"
+    componentGroup=".hidden"
+
+    cq:isContainer="{Boolean}false"
+    cq:noDecoration="{Boolean}false"
+
+    sling:resourceSuperType="foundation/parbase"
+    className="active-component">
+
+    <icon.png/>
+    <thumbnail.png/>
+</jcr:root>

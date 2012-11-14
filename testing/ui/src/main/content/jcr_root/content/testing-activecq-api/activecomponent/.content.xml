@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:title="Testing - ActiveCQ API ActiveComponent Page"
+        jcr:primaryType="cq:PageContent"
+        cq:designPath="/etc/designs/testing-activecq-api"
+        sling:resourceType="activecq/api/testing/components/pages/test-page">
+
+        <par jcr:primaryType="nt:unstructured"
+            sling:resourceType="foundation/components/parsys">
+
+            <active-component
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="activecq/api/testing/components/active-component"
+                plain-text="Content Resource: Plain text"
+                rich-text="Content Resource: &lt;strong&gt;Rich text&lt;/strong&gt;"
+                double="{Double}3.333"
+                long="{Long}3333333333"
+                boolean="{Boolean}true"
+                str-array="[content-resource-val-1, content-resource-val-2]"
+            />
+        </par>
+
+        <extra
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="activecq/api/testing/components/active-component"
+            plain-text="Extra Resource: Plain text"
+            rich-text="Extra Resource: &lt;strong&gt;Rich text&lt;/strong&gt;"
+            double="{Double}9.999"
+            long="{Long}9999999999"
+            boolean="{Boolean}false"
+            str-array="[extra-resource-val-1, extra-resource-val-2]"
+        />
+    </jcr:content>
+</jcr:root>

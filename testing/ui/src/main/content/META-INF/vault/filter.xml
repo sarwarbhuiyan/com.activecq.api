@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter vesion="1.0">
+	<filter root="/apps/testing" />
+	<filter root="/etc/designs/testing">
+		<exclude pattern="/etc/designs/testing/jcr:content/*" />
+	</filter>
+    <filter root="/etc/clientlibs/testing" />
+    <filter root="/content/testing-activecq-api" />
+</workspaceFilter>

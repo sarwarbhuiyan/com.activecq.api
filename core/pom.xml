@@ -34,6 +34,12 @@
         </license>
     </licenses>
 
+    <scm>
+        <connection>git://github.com/activecq/com.activecq.api.git</connection>
+        <developerConnection>https://github.com/activecq/com.activecq.api.git</developerConnection>
+        <url>https://github.com/activecq/com.activecq.api</url>
+    </scm>
+
     <build>
         <plugins>
             <plugin>

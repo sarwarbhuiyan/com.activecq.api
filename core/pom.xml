@@ -18,7 +18,7 @@
 
     <properties>
         <!-- Duplicate properties from parent POM; API Core should not be tightly
-             bound with parent due to distrobution in Nexus -->
+             bound with parent due to distribution in Nexus -->
         <project.ui.apps.installdir>/apps/vendors/activecq/install</project.ui.apps.installdir>
         <project.ui.basedir>${project.basedir}/../ui</project.ui.basedir>
         <project.core.basedir>${project.basedir}</project.core.basedir>
@@ -36,9 +36,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:activecq/com.activecq.api.git</connection>
-        <developerConnection>scm:git:git@github.com:activecq/com.activecq.api.git</developerConnection>
-        <url>git@github.com:activecq/com.activecq.api</url>
+        <connection>scm:git:git@github.com-activecq:activecq/com.activecq.api.git</connection>
+        <developerConnection>scm:git:git@github-activecq.com:activecq/com.activecq.api.git</developerConnection>
+        <url>https://github.com/activecq/com.activecq.api</url>
     </scm>
 
     <build>

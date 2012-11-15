@@ -22,29 +22,48 @@
             </resource>
 
             <!-- Clean unwanted files and folders from Vault package -->
-			<resource>
-				<directory>${basedir}/src/main/content/jcr_root</directory>
-				<targetPath>${basedir}/target/vault-work/jcr_root</targetPath>
-				<filtering>false</filtering>
-				<includes>
-					<include>**</include>
+            <resource>
+                <directory>${basedir}/src/main/content/jcr_root</directory>
+                <targetPath>${basedir}/target/vault-work/jcr_root</targetPath>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**</include>
                 </includes>
                 <excludes>
-					<exclude>libs/**</exclude>
-					<exclude>**/.svn</exclude>
+                    <exclude>libs/**</exclude>
+                    <exclude>**/.svn</exclude>
                     <exclude>**/.git</exclude>
                     <exclude>**/.gitignore</exclude>
-					<exclude>**/.vlt</exclude>
-					<exclude>**/.vltignore</exclude>
-					<exclude>**/.vlt-sync-config.properties</exclude>
-					<exclude>**/.vlt-sync.log</exclude>
+                    <exclude>**/.vlt</exclude>
+                    <exclude>**/.vltignore</exclude>
+                    <exclude>**/.vlt-sync-config.properties</exclude>
+                    <exclude>**/.vlt-sync.log</exclude>
                     <exclude>**/.DS_Store</exclude>
                     <exclude>**/Thumbs.db</exclude>
-				</excludes>
-			</resource>
+                </excludes>
+            </resource>
         </resources>
 
         <plugins>
+            <!-- Skip Maven Release -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.3.2</version>
+                <executions>
+                    <execution>
+                        <id></id>
+                        <phase>release</phase>
+                        <goals>
+                            <goal>perform</goal>
+                        </goals>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- Precompile JSPs for compilation checks -->
             <plugin>
                 <groupId>org.apache.sling</groupId>

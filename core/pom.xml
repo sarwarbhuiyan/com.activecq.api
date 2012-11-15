@@ -37,7 +37,7 @@
 
     <scm>
         <connection>scm:git:git@github.com-activecq:activecq/com.activecq.api.git</connection>
-        <developerConnection>scm:git:git@github-activecq.com:activecq/com.activecq.api.git</developerConnection>
+        <developerConnection>scm:git:git@github.com-activecq:activecq/com.activecq.api.git</developerConnection>
         <url>https://github.com/activecq/com.activecq.api</url>
     </scm>
 

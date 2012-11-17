@@ -2,30 +2,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>ActiveCQ API</name>
-    <description>ActiveCQ API project. This project contains APIs used in development on Adobe CQ 5.5+. For more info visit http://activecq.com</description>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+        <relativePath></relativePath>
+    </parent>
+
+    <name>ActiveCQ API (Core)</name>
+    <description>ActiveCQ API Core Bundle</description>
     <groupId>com.activecq.api</groupId>
-    <artifactId>parent</artifactId>
-    <version>2.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <artifactId>core</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <packaging>bundle</packaging>
 
     <properties>
+        <!-- Duplicate properties from parent POM; API Core should not be tightly
+             bound with parent due to distribution in Nexus -->
         <project.ui.apps.installdir>/apps/vendors/activecq/install</project.ui.apps.installdir>
-        <project.ui.basedir>${project.parent.basedir}/ui</project.ui.basedir>
-        <project.core.basedir>${project.parent.basedir}/core</project.core.basedir>
-
-        <vault.targetURL>http://localhost:4502/crx/packmgr/service.jsp</vault.targetURL>
-        <vault.userId>admin</vault.userId>
-        <vault.password>admin</vault.password>
+        <project.ui.basedir>${project.basedir}/../ui</project.ui.basedir>
+        <project.core.basedir>${project.basedir}</project.core.basedir>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-
-    <modules>
-        <module>core</module>
-        <module>ui</module>
-    </modules>
 
     <licenses>
         <license>
@@ -35,71 +35,127 @@
         </license>
     </licenses>
 
+    <scm>
+        <connection>scm:git:git@github.com-activecq:activecq/com.activecq.api.git</connection>
+        <developerConnection>scm:git:git@github.com-activecq:activecq/com.activecq.api.git</developerConnection>
+        <url>https://github.com/activecq/com.activecq.api</url>
+    </scm>
+
     <build>
         <plugins>
-            <!-- Skip Maven Release -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.3.2</version>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.8.1</version>
+                <configuration>
+                    <sourceFileExcludes>
+                        **/*Test.java:**/Activator.java
+                    </sourceFileExcludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id></id>
-                        <phase>release</phase>
+                        <id>install-jar</id>
+                        <phase>install</phase>
                         <goals>
-                            <goal>perform</goal>
+                            <goal>copy</goal>
                         </goals>
                         <configuration>
-                            <skip>true</skip>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${project.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <destFileName>${project.build.fileName}</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${project.ui.basedir}/src/main/content/jcr_root/${project.ui.apps.installdir}</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
 
+            <!-- Delete jar from UI project -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <verbose>false</verbose>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.ui.basedir}/src/main/content/jcr_root/${project.ui.apps.installdir}/</directory>
+                            <followSymlinks>false</followSymlinks>
+                            <includes>
+                                <include>${project.build.finalName}.jar</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>auto-clean</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Build the OSGi Bundle artifact -->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-scr-plugin</artifactId>
+                <version>1.7.4</version>
+                <executions>
+                    <execution>
+                        <id>generate-scr-scrdescriptor</id>
+                        <goals>
+                            <goal>scr</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <outputDirectory>src/main/resources</outputDirectory>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.3.7</version>
                 <extensions>true</extensions>
-            </plugin>
+                <configuration>
+                    <instructions>
+                        <Bundle-Name>${project.name}</Bundle-Name>
+                        <Bundle-SymbolicName>${project.groupId}-${project.artifactId}</Bundle-SymbolicName>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.7</version>
-            </plugin>
+                        <Sling-Test-Regexp>.*Test</Sling-Test-Regexp>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.1.2</version>
-            </plugin>
+                        <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
 
+                        <Embed-Directory>dependency</Embed-Directory>
+                        <Embed-StripGroup>false</Embed-StripGroup>
+                        <Strip-Version>false</Strip-Version>
+
+                        <Export-Package>
+                            ${project.groupId}.*;version=${project.version}
+                        </Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.felix</groupId>
-                    <artifactId>maven-bundle-plugin</artifactId>
-                    <version>2.3.7</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+
+        <finalName>${project.groupId}-${project.artifactId}-${project.version}</finalName>
+
     </build>
 
-    <dependencyManagement>
-        <dependencies>
-
-            <!-- JavaX -->
+    <dependencies>
+      <!-- JavaX -->
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>servlet-api</artifactId>
@@ -259,7 +315,7 @@
             </dependency>
 
             <!-- Must exist before cq-xssprotection; Allows for newer version of
-            commons-codec -->
+           commons-codec -->
             <dependency>
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
@@ -490,9 +546,6 @@
                 <artifactId>org.apache.sling.junit.remote</artifactId>
                 <version>1.0.6</version>
                 <scope>provided</scope>
-
             </dependency>
-
-        </dependencies>
-    </dependencyManagement>
+    </dependencies>
 </project>

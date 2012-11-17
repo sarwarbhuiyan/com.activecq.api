@@ -35,6 +35,7 @@ public class PersistencePlugin extends BasePlugin {
         super(request);
         this.component = WCMUtils.getComponent(this.resource);
         this.componentKey = "__acq_persistence_plugin-" + this.component.getPath();
+        this.enable();
     }
 
     /**
@@ -109,5 +110,14 @@ public class PersistencePlugin extends BasePlugin {
         }
 
         return hashMap.isEmpty();
+    }
+
+    /**
+     * Disable method does not apply to this Plugin; it is always enabled.
+     * Override to prevent inaccurate state representation via isEnabled()
+     */
+    @Override
+    public void disable() {
+        // Do nothing; Enable/Disable does not apply to this Plugin
     }
 }

@@ -33,6 +33,7 @@ public class WCMModePlugin extends BasePlugin {
         this.original = WCMMode.fromRequest(this.request);
         this.previous = this.original;
         this.current = this.previous;
+        this.enable();
     }
 
     public void switchTo(WCMMode mode) {

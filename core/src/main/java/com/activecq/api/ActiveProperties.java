@@ -65,7 +65,7 @@ public class ActiveProperties {
             }
 
             // Get the value of the field
-            String value = null;
+            String value;
             try {
                 value = StringUtils.stripToNull((String) fld.get(this));
             } catch (IllegalArgumentException e) {

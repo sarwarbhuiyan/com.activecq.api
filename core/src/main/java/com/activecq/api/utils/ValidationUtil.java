@@ -187,7 +187,7 @@ public class ValidationUtil {
             return false;
         }
 
-        int dataLength = 0;
+        int dataLength;
         Object val = form.get(key);
 
         if (val instanceof String) {

@@ -53,7 +53,6 @@ public class ServiceUtil {
      * @return a List of Service objects
      */
     public static <T> List<T> getServices(Class<T> serviceType, SlingScriptHelper sling, String filter) {
-        ArrayList<T> list = new ArrayList<T>();
         return Arrays.asList(sling.getServices(serviceType, filter));
     }
 

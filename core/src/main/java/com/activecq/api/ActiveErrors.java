@@ -67,8 +67,7 @@ public class ActiveErrors {
                 this.data = incomingForm.getErrors().toMap();
             }
         } else if (ActiveErrors.hasIncomingQueryParamData(request)) {
-            String errorData = null;
-            errorData = request.getRequestParameter(ActiveErrors.CQ_ERRORS).getString();
+            String errorData = request.getRequestParameter(ActiveErrors.CQ_ERRORS).getString();
 
             if (StringUtils.isNotBlank(errorData)) {
                 try {

@@ -94,9 +94,9 @@
                     <verbose>false</verbose>
 
                     <!-- Content package naming properties -->
-                    <finalName>${project.groupId}-${project.artifactId}-${project.version}</finalName>
-                    <group>${project.groupId}</group>
-                    <name>${project.groupId}-${project.artifactId}</name>
+                    <finalName>${project.groupId}-${project.version}</finalName>
+                    <group>${project.organization.name}</group>
+                    <name>${project.groupId}</name>
                     <version>${project.version}</version>
 
                     <description>${project.parent.description}</description>
@@ -107,16 +107,6 @@
 
                     <failOnMissingEmbed>false</failOnMissingEmbed>
                     <builtContentDirectory>vault-work</builtContentDirectory>
-                    <!-- Embeds happen during build of UI and Core Projects -->
-                    <!--
-                    <embeddeds>
-                        <embedded>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>core</artifactId>
-                            <target>/apps/vendors/activecq/install</target>
-                        </embedded>
-                    </embeddeds>
-                    -->
                 </configuration>
 
                 <executions>
@@ -129,7 +119,7 @@
             </plugin>
         </plugins>
 
-        <finalName>${project.groupId}-${project.artifactId}-${project.version}</finalName>
+        <finalName>${project.groupId}-${project.version}</finalName>
     </build>
 
     <dependencies>

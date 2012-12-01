@@ -84,7 +84,7 @@ public class PersistencePlugin extends BasePlugin {
      * @return
      */
     public Map<String, Object> getMap() {
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map;
 
         map = (HashMap<String, Object>) this.request.getAttribute(this.componentKey);
         if (map == null) {

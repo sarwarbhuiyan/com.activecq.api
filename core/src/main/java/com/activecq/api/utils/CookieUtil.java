@@ -198,7 +198,7 @@ public class CookieUtil {
             count++;
         }
 
-        return count++;
+        return count;
     }
 
 

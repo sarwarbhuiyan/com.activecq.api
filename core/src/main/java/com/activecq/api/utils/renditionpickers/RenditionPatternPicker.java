@@ -92,4 +92,4 @@ public class RenditionPatternPicker implements RenditionPicker {
             return null;
         }
     }
-};
+}

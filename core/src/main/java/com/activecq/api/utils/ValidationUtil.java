@@ -39,7 +39,7 @@ public class ValidationUtil {
         EQUAL_TO,
         GREATER_THAN,
         GREATER_THAN_OR_EQUAL_TO
-    };
+    }
 
     private ValidationUtil() { }
 

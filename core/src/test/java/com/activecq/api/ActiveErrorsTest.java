@@ -69,7 +69,7 @@ public class ActiveErrorsTest {
     @Test
     public void testHasAny() {
         System.out.println("hasAny");
-        ActiveErrors instance = new ActiveErrors(map);;
+        ActiveErrors instance = new ActiveErrors(map);
         boolean result = instance.hasAny(new String[] { "invalid-key", "invalid-foo", "valid-key"});
         assertTrue(result);        
 

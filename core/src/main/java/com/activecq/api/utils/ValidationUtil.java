@@ -58,10 +58,8 @@ public class ValidationUtil {
         Object val = form.get(key, Object.class);
         if (val instanceof String) {
             return StringUtils.isNotBlank((String) val);
-        } else if (val != null) {
-            return true;
         } else {
-            return false;
+            return val != null;
         }
     }
 
@@ -84,15 +82,9 @@ public class ValidationUtil {
             throw new NullPointerException("ResourceResolver cannot be null.");
         }
 
-        String val = (String) form.get(key);
+        String val = form.get(key);
         Resource r = resourceResolver.resolve(val);
-        if (r == null) {
-            return false;
-        } else if (ResourceUtil.isA(r, NonExistingResource.RESOURCE_TYPE_NON_EXISTING)) {
-            return false;
-        } else {
-            return true;
-        }
+        return r!= null && !(ResourceUtil.isA(r, NonExistingResource.RESOURCE_TYPE_NON_EXISTING));
     }
 
     /**

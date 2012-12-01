@@ -27,6 +27,11 @@
         <module>ui</module>
     </modules>
 
+    <organization>
+        <name>ActiveCQ</name>
+        <url>http://activecq.com</url>
+    </organization>
+
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>

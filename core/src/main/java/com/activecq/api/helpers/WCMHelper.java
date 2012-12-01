@@ -204,7 +204,6 @@ public class WCMHelper {
 
         final Resource resource = request.getResource();
         final com.day.cq.wcm.api.components.Component component = WCMUtils.getComponent(resource);
-        final String title = StringUtils.capitalize(component.getTitle());
 
         if (!isAuthoringMode(request)
                 || conditionAndCheck(isConfigured)) {
@@ -219,6 +218,8 @@ public class WCMHelper {
             html += getCssStyle();
             html += "Could not resolve CQ Component type.";
         } else if (WCMEditType.NOICON.equals(editType) || WCMEditType.NONE.equals(editType)) {
+            final String title = StringUtils.capitalize(component.getTitle());
+
             html += getCssStyle();
             html += "<dl>";
             html += "<dt>" + title + " Component</dt>";
@@ -254,6 +255,8 @@ public class WCMHelper {
             }
         } else {
             // Use specified EditType
+            final String title = StringUtils.capitalize(component.getTitle());
+
             html += "<img src=\"/libs/cq/ui/resources/0.gif\"" + " "
                     + "class=\"" + editType.getCssClass() + "\""
                     + " " + "alt=\"" + title + "\"" + " "
@@ -301,7 +304,6 @@ public class WCMHelper {
 
         final Resource resource = request.getResource();
         final com.day.cq.wcm.api.components.Component component = WCMUtils.getComponent(resource);
-        final String title = StringUtils.capitalize(component.getTitle());
 
         String html = "";
 
@@ -408,7 +410,7 @@ public class WCMHelper {
 
         for (String item : list) {
             if (item == null) {
-                continue;
+                // continue
             } else if (item.contains(pattern)) {
                 return true;
             }

@@ -25,7 +25,7 @@ public class OsgiServiceRankingComparator implements Comparator<ServiceReference
             // a null ref is considered to be smaller than any non-null ref
             return 1;
         }
-        if (ref1 == null && ref2 != null) {
+        if (ref1 == null) { // && ref2 != null
             // a null ref is considered to be smaller than any non-null ref
             return -1;
         }

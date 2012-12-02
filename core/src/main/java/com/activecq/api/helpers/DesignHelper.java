@@ -233,11 +233,12 @@ public class DesignHelper {
         }
 
         final Design design = designer.getDesign(page);
-        final Resource designResource = resourceResolver.getResource(design.getPath());
 
         if (design == null) {
             return "";
         }
+
+        final Resource designResource = resourceResolver.getResource(design.getPath());
 
         String src = makePath(designResource, pathPrefix, path);
         if (!exists(resourceResolver, src)) {

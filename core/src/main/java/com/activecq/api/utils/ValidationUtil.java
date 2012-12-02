@@ -125,12 +125,8 @@ public class ValidationUtil {
         }
 
         for (T item : blist) {
-            if (item instanceof Object) {
+            if (item != null) {
                 if (val.equals(item)) {
-                    return false;
-                }
-            } else {
-                if (val == item) {
                     return false;
                 }
             }
@@ -157,7 +153,7 @@ public class ValidationUtil {
         T val = (T) form.get(key);
 
         for (T item : wlist) {
-            if (item instanceof Object) {
+            if (item != null) {
                 if (val.equals(item)) {
                     return true;
                 }

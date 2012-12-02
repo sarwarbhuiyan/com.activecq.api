@@ -425,8 +425,7 @@ public class ActiveForm {
      * @throws JSONException
      * @throws UnsupportedEncodingException
      */
-    public static String getQueryParameters(ActiveForm form) throws JSONException,
-            UnsupportedEncodingException {
+    public static String getQueryParameters(ActiveForm form) throws UnsupportedEncodingException {
 
         final String formData = form.toJSON().toString();
         final String errorData = form.getErrors().toJSON().toString();

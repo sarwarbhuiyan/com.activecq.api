@@ -36,12 +36,7 @@ public class I18nPlugin extends BasePlugin {
     public I18nPlugin(SlingHttpServletRequest request) {
         super(request);
         this.i18n = new I18n(request);
-
-        if (this.i18n != null) {
-            this.enable();
-        } else {
-            this.disable();
-        }
+        this.enable();
     }
 
     /**

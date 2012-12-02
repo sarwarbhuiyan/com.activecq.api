@@ -204,7 +204,6 @@ public class WCMHelper {
 
         final Resource resource = request.getResource();
         final com.day.cq.wcm.api.components.Component component = WCMUtils.getComponent(resource);
-
         if (!isAuthoringMode(request)
                 || conditionAndCheck(isConfigured)) {
             return null;
@@ -254,9 +253,9 @@ public class WCMHelper {
                 }
             }
         } else {
-            // Use specified EditType
             final String title = StringUtils.capitalize(component.getTitle());
 
+            // Use specified EditType
             html += "<img src=\"/libs/cq/ui/resources/0.gif\"" + " "
                     + "class=\"" + editType.getCssClass() + "\""
                     + " " + "alt=\"" + title + "\"" + " "
@@ -274,7 +273,7 @@ public class WCMHelper {
      * null.
      *
      * @param request
-     * @param getName
+     * @param name
      * @param isConfigured will display edit block if evaluates to false
      * @return
      */
@@ -304,6 +303,7 @@ public class WCMHelper {
 
         final Resource resource = request.getResource();
         final com.day.cq.wcm.api.components.Component component = WCMUtils.getComponent(resource);
+        final String title = StringUtils.capitalize(component.getTitle());
 
         String html = "";
 
@@ -410,7 +410,7 @@ public class WCMHelper {
 
         for (String item : list) {
             if (item == null) {
-                // continue
+                continue;
             } else if (item.contains(pattern)) {
                 return true;
             }

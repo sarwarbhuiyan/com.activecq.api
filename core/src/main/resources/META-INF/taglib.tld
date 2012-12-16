@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-Instance"
+        xmlns:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd" version="2.0">
+
+      <tlibversion>1.0</tlibversion>
+
+      <jspversion>1.1</jspversion>
+      <short-name>activecqtags</short-name>
+      <uri>http://activecq.com/wcm/taglibs/activecqtags/1.0</uri>
+      <tag>
+          <name>init</name>
+          <tagclass>com.activecq.api.tags.InitTag</tagclass>
+          <attribute>
+             <name>var</name>
+             <required>true</required>
+             <rtexprvalue>false</rtexprvalue>
+         </attribute>
+         <attribute>
+             <name>model</name>
+             <required>true</required>
+             <rtexprvalue>false</rtexprvalue>
+         </attribute>
+         
+     </tag>
+
+</taglib>

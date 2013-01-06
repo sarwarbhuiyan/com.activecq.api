@@ -59,7 +59,7 @@
                 <executions>
                     <execution>
                         <id>install-jar</id>
-                        <phase>install</phase>
+                        <phase>package</phase>
                         <goals>
                             <goal>copy</goal>
                         </goals>
@@ -70,7 +70,7 @@
                                     <artifactId>${project.artifactId}</artifactId>
                                     <version>${project.version}</version>
                                     <overWrite>true</overWrite>
-                                    <destFileName>${project.build.fileName}</destFileName>
+                                    <destFileName>${project.build.fileName}.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
                             <outputDirectory>${project.ui.basedir}/src/main/content/jcr_root/${project.ui.apps.installdir}</outputDirectory>

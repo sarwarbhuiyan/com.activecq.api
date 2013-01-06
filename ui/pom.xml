@@ -9,7 +9,7 @@
     </parent>
 
     <name>ActiveCQ API (UI)</name>
-    <description>Content Package for deployment into Adobe CQ application container.</description>
+    <description>ActiveCQ API project. This project contains APIs used in development on Adobe CQ 5.5+. For more info visit http://activecq.com</description>
     <artifactId>ui</artifactId>
     <packaging>content-package</packaging>
 

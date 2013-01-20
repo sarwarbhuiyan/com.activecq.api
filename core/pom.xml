@@ -145,6 +145,7 @@
                         <Export-Package>
                             ${project.groupId}.*;version=${project.version}
                         </Export-Package>
+                        <DynamicImport-Package>*</DynamicImport-Package>
                     </instructions>
                 </configuration>
             </plugin>

@@ -9,7 +9,7 @@
     </parent>
 
     <name>ActiveCQ API (UI)</name>
-    <description>Content Package for deployment into Adobe CQ application container.</description>
+    <description>ActiveCQ API project. This project contains APIs used in development on Adobe CQ 5.5+. For more info visit http://activecq.com</description>
     <artifactId>ui</artifactId>
     <packaging>content-package</packaging>
 
@@ -87,7 +87,7 @@
             <plugin>
                 <groupId>com.day.jcr.vault</groupId>
                 <artifactId>content-package-maven-plugin</artifactId>
-                <version>0.0.14</version>
+                <version>0.0.18</version>
                 <extensions>true</extensions>
 
                 <configuration>
@@ -99,7 +99,7 @@
                     <name>${project.groupId}</name>
                     <version>${project.version}</version>
 
-                    <description>${project.parent.description}</description>
+                    <description>${project.description}</description>
 
                     <failOnError>true</failOnError>
                               
